@@ -1,4 +1,4 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 
 group='com.github.abcdqianlei1990'
@@ -6,7 +6,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
-        applicationId "com.upgrade.channey.common_upgrade"
+//        applicationId "com.upgrade.channey.common_upgrade"
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 1
