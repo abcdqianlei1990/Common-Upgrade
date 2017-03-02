@@ -7,7 +7,7 @@ app自动更新模块，支持android7.0
 UpgradeDialog.getInstance(this).show("有新版本","http://118.178.248.230:8888/app-dxd-debug.apk",null);
 
 //7.0
-String authority = "com.upgrade.channey.test.fileProvider";
+String authority = <font color=#00FFFF>"com.upgrade.channey.test.fileProvider"</font>;
 UpgradeDialog.getInstance(this).show("有新版本","http://118.178.248.230:8888/app-dxd-debug.apk",authority);
 ```
 ##什么是authority？
