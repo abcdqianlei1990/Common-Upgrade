@@ -23,15 +23,13 @@ import com.daimajia.numberprogressbar.OnProgressBarListener;
 
 public class UpgradeDialog {
     private static final String TAG = "UpgradeDialog";
-    private static Context context;
+    private static UpgradeDialog INSTANCE = null;
+    private Context context;
     private AlertDialog dialog;
-    private String link;    //apk link
     private TextView content;
     private NumberProgressBar bar;
     private TextView negBtn;
     private TextView posBtn;
-    private static String msg;
-    private String authority;
     private static final int MAX_PROGRESS = 100;
     private int mDownLoadStatus = -1;
     private static final int DOWNLOAD_STATUS_START = 0;
@@ -59,22 +57,35 @@ public class UpgradeDialog {
         }
     };
 
-    public UpgradeDialog(@NonNull Context ctx, String str,String link,String authority) {
+   public static UpgradeDialog getInstance(@NonNull Context context){
+       if(INSTANCE == null){
+           synchronized (UpgradeDialog.class){
+               if(INSTANCE == null){
+                   INSTANCE = new UpgradeDialog(context);
+               }
+           }
+       }
+       return INSTANCE;
+   }
+
+    private UpgradeDialog(@NonNull Context ctx){
+        context = ctx;
+    }
+
+    /**
+     * show upgrade dialog
+     *
+     * @param msg message to show
+     * @param apkLink 安装包链接
+     * @param authority android sdk 7.0需要的file provider authority
+     */
+    public void show(String msg,final String apkLink,final String authority){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             if (TextUtils.isEmpty(authority)){
                 Log.e(TAG,"need file provider authority.");
                 return;
             }
         }
-        context = ctx;
-        msg = str;
-        this.link = link;
-        this.authority = authority;
-        show();
-        initViews(context);
-    }
-
-    private void show(){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         dialog = builder.create();
         dialog.show();
@@ -137,14 +148,10 @@ public class UpgradeDialog {
                                 mHandler.sendMessage(msg);
                             }
                         }
-                    },link);
+                    },apkLink);
                 }
             }
         });
-    }
-
-    private void initViews(Context context){
-
         initProgressBar();
     }
 
