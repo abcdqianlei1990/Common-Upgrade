@@ -40,6 +40,7 @@ public class UpgradeDialog {
     private static final int DOWNLOAD_STATUS_FAILURE = 2;
     private static final int DOWNLOAD_STATUS_END = 3;
     private boolean focusUpdate = false;
+    private OnNegativeButtonClickListener onNegativeButtonClickListener;
     private Handler mHandler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -117,6 +118,7 @@ public class UpgradeDialog {
         negBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                onNegativeButtonClickListener.onClick();
                 dialog.dismiss();
                 bar.setVisibility(View.GONE);
             }
@@ -201,5 +203,14 @@ public class UpgradeDialog {
     public UpgradeDialog focusUpdate(boolean focus){
         focusUpdate = focus;
         return this;
+    }
+
+    public UpgradeDialog setOnNegativeButtonClickListener(OnNegativeButtonClickListener listener){
+        onNegativeButtonClickListener = listener;
+        return this;
+    }
+
+    public interface OnNegativeButtonClickListener{
+        void onClick();
     }
 }
