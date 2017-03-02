@@ -63,7 +63,7 @@ b.在你的manifest中声明provider
 ##Step 2. Add the dependency
 
 	dependencies {
-	        compile 'com.github.abcdqianlei1990:Common-Upgrade:1.0.8'
+	        compile 'com.github.abcdqianlei1990:Common-Upgrade:1.0.9'
 	}
   
 ![baidu](http://imgsrc.baidu.com/forum/w%3D580/sign=279d5ba5f4faaf5184e381b7bc5594ed/a5560923dd54564e7bde17babade9c82d0584ff9.jpg "百度logo") 
