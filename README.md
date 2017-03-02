@@ -8,11 +8,18 @@ public void checkUpdate(String versionCode,String link,boolean focusUpgrade){
         boolean needUpdate = Util.needUpdate(versionCode);
 	//String authority = "com.upgrade.channey.test.fileProvider"; //7.0版本，值和manifest中provider的authority一致
 	String authority = "";	//7.0以下版本authority可为空，可直接传null
-        if(needUpdate){
-            UpgradeDialog.getInstance(this).focusUpdate(focusUpgrade).show("发现新版本",link,authority);
+        if(needUpdate){
+            UpgradeDialog.getInstance(this)
+                    .focusUpdate(focusUpgrade)
+                    .setOnNegativeButtonClickListener(new UpgradeDialog.OnNegativeButtonClickListener() {
+                        @Override
+                        public void onClick() {
+                            // TODO: 2017/3/2  
+                        }
+                    })
+                    .show("发现新版本",link,authority);
         }
     }
-
 
 ```
 ##什么是authority？
