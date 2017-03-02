@@ -3,7 +3,12 @@ app自动更新模块，支持android7.0
 
 #useage
 ```
-new UpgradeDialog(this, "发现新版本",str)
+//7.0以下版本
+UpgradeDialog.getInstance(this).show("有新版本","http://118.178.248.230:8888/app-dxd-debug.apk",null);
+
+//7.0
+String authority = "com.upgrade.channey.test.fileProvider";
+UpgradeDialog.getInstance(this).show("有新版本","http://118.178.248.230:8888/app-dxd-debug.apk",authority);
 ```
 ##Add it in your root build.gradle at the end of repositories:
 
