@@ -3,12 +3,17 @@ app自动更新模块，支持android7.0
 
 #useage
 ```
-//7.0以下版本
-UpgradeDialog.getInstance(this).show("有新版本","http://118.178.248.230:8888/app-dxd-debug.apk",null);
+//versionCode、link和focusUpgrade都是可配置的
+public void checkUpdate(String versionCode,String link,boolean focusUpgrade){
+        boolean needUpdate = Util.needUpdate(versionCode);
+	//String authority = "com.upgrade.channey.test.fileProvider"; //7.0版本，值和manifest中provider的authority一致
+	String authority = "";	//7.0以下版本authority可为空，可直接传null
+        if(needUpdate){
+            UpgradeDialog.getInstance(this).focusUpdate(focusUpgrade).show("发现新版本",link,authority);
+        }
+    }
 
-//7.0
-String authority = "com.upgrade.channey.test.fileProvider"; //**即manifest中provider的authority**
-UpgradeDialog.getInstance(this).show("有新版本","http://118.178.248.230:8888/app-dxd-debug.apk",authority);
+
 ```
 ##什么是authority？
 authority是content provider中定义的
