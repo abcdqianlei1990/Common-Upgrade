@@ -2,7 +2,9 @@ package com.upgrade.channey.common_upgrade;
 
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
@@ -126,46 +128,54 @@ public class UpgradeDialog {
         posBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bar.setVisibility(View.VISIBLE);
                 noticeTv.setVisibility(View.GONE);
                 if(mDownLoadStatus == DOWNLOAD_STATUS_START || mDownLoadStatus == DOWNLOAD_STATUS_DOWNLOADING){
                     Toast.makeText(activity,"下载已开始",Toast.LENGTH_LONG).show();
                 }else {
-                    UpdateUtil.downLoadApk(activity, new UpdateUtil.DownloadListener() {
-                        @Override
-                        public void startDownload() {
-                            mDownLoadStatus = DOWNLOAD_STATUS_START;
-                            Log.d("qian","startDownloading");
-                        }
-
-                        @Override
-                        public void downloadSuccess() {
-                            mDownLoadStatus = DOWNLOAD_STATUS_END;
-                            Log.d("qian","downloadSuccess");
-                            UpdateUtil.installApk(activity,authority);
-                        }
-
-                        @Override
-                        public void downloadFailure(Exception e) {
-                            mDownLoadStatus = DOWNLOAD_STATUS_END;
-                            Log.d("qian","downloadFailure"+e.getMessage());
-                            mHandler.sendEmptyMessage(DOWNLOAD_STATUS_FAILURE);
-                        }
-
-                        @Override
-                        public void onDownload(long totalSize, long current) {
-                            mDownLoadStatus = DOWNLOAD_STATUS_DOWNLOADING;
-                            int i = (int) (current*100 /totalSize);
-                            Message msg = Message.obtain();
-                            if(i == 100){
-                                mHandler.sendEmptyMessage(DOWNLOAD_STATUS_END);
-                            }else {
-                                msg.what = DOWNLOAD_STATUS_DOWNLOADING;
-                                msg.arg1 = i;
-                                mHandler.sendMessage(msg);
+                    try {
+                        Uri uri = Uri.parse("market://details?id=" + activity.getPackageName());
+                        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        activity.startActivity(intent);
+                    } catch (Exception e) {
+                        bar.setVisibility(View.VISIBLE);
+//                        Toast.makeText(activity,"未检测到应用市场,已通过浏览器下载",Toast.LENGTH_LONG).show();
+                        UpdateUtil.downLoadApk(activity, new UpdateUtil.DownloadListener() {
+                            @Override
+                            public void startDownload() {
+                                mDownLoadStatus = DOWNLOAD_STATUS_START;
+                                Log.d("qian","startDownloading");
                             }
-                        }
-                    },apkLink);
+
+                            @Override
+                            public void downloadSuccess() {
+                                mDownLoadStatus = DOWNLOAD_STATUS_END;
+                                Log.d("qian","downloadSuccess");
+                                UpdateUtil.installApk(activity,authority);
+                            }
+
+                            @Override
+                            public void downloadFailure(Exception e) {
+                                mDownLoadStatus = DOWNLOAD_STATUS_END;
+                                Log.d("qian","downloadFailure"+e.getMessage());
+                                mHandler.sendEmptyMessage(DOWNLOAD_STATUS_FAILURE);
+                            }
+
+                            @Override
+                            public void onDownload(long totalSize, long current) {
+                                mDownLoadStatus = DOWNLOAD_STATUS_DOWNLOADING;
+                                int i = (int) (current*100 /totalSize);
+                                Message msg = Message.obtain();
+                                if(i == 100){
+                                    mHandler.sendEmptyMessage(DOWNLOAD_STATUS_END);
+                                }else {
+                                    msg.what = DOWNLOAD_STATUS_DOWNLOADING;
+                                    msg.arg1 = i;
+                                    mHandler.sendMessage(msg);
+                                }
+                            }
+                        },apkLink);
+                    }
                 }
             }
         });
