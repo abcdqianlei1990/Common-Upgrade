@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
         String authority = "com.upgrade.channey.test.fileProvider"; //和manifest中provider的authority一致
         UpgradeDialog.getInstance(this)
                 .focusUpdate(false)
+                .gotoMarket(true)
                 .setOnNegativeButtonClickListener(new UpgradeDialog.OnNegativeButtonClickListener() {
             @Override
             public void onClick() {

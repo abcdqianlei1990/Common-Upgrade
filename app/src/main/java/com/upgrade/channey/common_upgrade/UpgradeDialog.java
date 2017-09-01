@@ -42,6 +42,7 @@ public class UpgradeDialog {
     private static final int DOWNLOAD_STATUS_FAILURE = 2;
     private static final int DOWNLOAD_STATUS_END = 3;
     private boolean focusUpdate = false;
+    private boolean gotoMarket = false;
     private OnNegativeButtonClickListener onNegativeButtonClickListener;
     private Handler mHandler = new Handler(){
         @Override
@@ -132,49 +133,17 @@ public class UpgradeDialog {
                 if(mDownLoadStatus == DOWNLOAD_STATUS_START || mDownLoadStatus == DOWNLOAD_STATUS_DOWNLOADING){
                     Toast.makeText(activity,"下载已开始",Toast.LENGTH_LONG).show();
                 }else {
-                    try {
-                        Uri uri = Uri.parse("market://details?id=" + activity.getPackageName());
-                        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        activity.startActivity(intent);
-                    } catch (Exception e) {
-                        bar.setVisibility(View.VISIBLE);
-//                        Toast.makeText(activity,"未检测到应用市场,已通过浏览器下载",Toast.LENGTH_LONG).show();
-                        UpdateUtil.downLoadApk(activity, new UpdateUtil.DownloadListener() {
-                            @Override
-                            public void startDownload() {
-                                mDownLoadStatus = DOWNLOAD_STATUS_START;
-                                Log.d("qian","startDownloading");
-                            }
-
-                            @Override
-                            public void downloadSuccess() {
-                                mDownLoadStatus = DOWNLOAD_STATUS_END;
-                                Log.d("qian","downloadSuccess");
-                                UpdateUtil.installApk(activity,authority);
-                            }
-
-                            @Override
-                            public void downloadFailure(Exception e) {
-                                mDownLoadStatus = DOWNLOAD_STATUS_END;
-                                Log.d("qian","downloadFailure"+e.getMessage());
-                                mHandler.sendEmptyMessage(DOWNLOAD_STATUS_FAILURE);
-                            }
-
-                            @Override
-                            public void onDownload(long totalSize, long current) {
-                                mDownLoadStatus = DOWNLOAD_STATUS_DOWNLOADING;
-                                int i = (int) (current*100 /totalSize);
-                                Message msg = Message.obtain();
-                                if(i == 100){
-                                    mHandler.sendEmptyMessage(DOWNLOAD_STATUS_END);
-                                }else {
-                                    msg.what = DOWNLOAD_STATUS_DOWNLOADING;
-                                    msg.arg1 = i;
-                                    mHandler.sendMessage(msg);
-                                }
-                            }
-                        },apkLink);
+                    if (gotoMarket){
+                        try {
+                            Uri uri = Uri.parse("market://details?id=" + activity.getPackageName());
+                            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            activity.startActivity(intent);
+                        } catch (Exception e) {
+                            downloadFromServer(apkLink,authority);
+                        }
+                    }else {
+                        downloadFromServer(apkLink,authority);
                     }
                 }
             }
@@ -222,5 +191,54 @@ public class UpgradeDialog {
 
     public interface OnNegativeButtonClickListener{
         void onClick();
+    }
+
+    /**
+     * notice:该方法调用请放在{@link #show(String, String, String)}前面
+     * @param gotoMarket 是否去应用市场下载新版
+     */
+    public UpgradeDialog gotoMarket(boolean gotoMarket){
+        this.gotoMarket = gotoMarket;
+        return this;
+    }
+
+    public void downloadFromServer(final String apkLink,@Nullable final String authority){
+        bar.setVisibility(View.VISIBLE);
+//                        Toast.makeText(activity,"未检测到应用市场,已通过浏览器下载",Toast.LENGTH_LONG).show();
+        UpdateUtil.downLoadApk(activity, new UpdateUtil.DownloadListener() {
+            @Override
+            public void startDownload() {
+                mDownLoadStatus = DOWNLOAD_STATUS_START;
+                Log.d("qian","startDownloading");
+            }
+
+            @Override
+            public void downloadSuccess() {
+                mDownLoadStatus = DOWNLOAD_STATUS_END;
+                Log.d("qian","downloadSuccess");
+                UpdateUtil.installApk(activity,authority);
+            }
+
+            @Override
+            public void downloadFailure(Exception e) {
+                mDownLoadStatus = DOWNLOAD_STATUS_END;
+                Log.d("qian","downloadFailure"+e.getMessage());
+                mHandler.sendEmptyMessage(DOWNLOAD_STATUS_FAILURE);
+            }
+
+            @Override
+            public void onDownload(long totalSize, long current) {
+                mDownLoadStatus = DOWNLOAD_STATUS_DOWNLOADING;
+                int i = (int) (current*100 /totalSize);
+                Message msg = Message.obtain();
+                if(i == 100){
+                    mHandler.sendEmptyMessage(DOWNLOAD_STATUS_END);
+                }else {
+                    msg.what = DOWNLOAD_STATUS_DOWNLOADING;
+                    msg.arg1 = i;
+                    mHandler.sendMessage(msg);
+                }
+            }
+        },apkLink);
     }
 }
