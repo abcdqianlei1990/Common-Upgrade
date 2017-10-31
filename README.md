@@ -11,6 +11,7 @@ public void checkUpdate(String versionCode,String link,boolean focusUpgrade){
         if(needUpdate){
             UpgradeDialog.getInstance(this)
                     .focusUpdate(focusUpgrade)
+                    .gotoMarket(false)
                     .setOnNegativeButtonClickListener(new UpgradeDialog.OnNegativeButtonClickListener() {
                         @Override
                         public void onClick() {
