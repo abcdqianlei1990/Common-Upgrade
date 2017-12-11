@@ -3,7 +3,7 @@
 app自动更新模块，支持android7.0
 
 ## useage
-see sample
+see [sample](https://github.com/abcdqianlei1990/Common-Upgrade/tree/master/sample)
 
 ## 什么是authority？
 authority是content provider中定义的
