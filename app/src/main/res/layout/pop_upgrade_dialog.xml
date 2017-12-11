@@ -7,32 +7,34 @@
     <LinearLayout
         android:id="@+id/upgrade_dialog_wrapper"
         android:background="@drawable/background_with_corner"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:orientation="vertical"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         >
-
         <TextView
             android:id="@+id/upgrade_dialog_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/title"
-            android:paddingLeft="@dimen/dp_40"
-            android:paddingRight="@dimen/dp_40"
             android:gravity="center"
             android:textColor="@color/commonTextColorGrayColor_3"
             android:textSize="18sp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="15dp"
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:lineSpacingExtra="5dp"
             />
         <FrameLayout
+            android:id="@+id/upgrade_dialog_progressBar_group"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginBottom="10dp">
             <com.daimajia.numberprogressbar.NumberProgressBar
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="match_parent"
@@ -54,16 +56,31 @@
         </FrameLayout>
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="0.5dp"
+            android:layout_height="@dimen/commonLineWidth"
             android:background="@color/commonLineColor"
-            android:layout_marginTop="15dp"/>
+            />
+        <TextView
+            android:id="@+id/upgrade_dialog_force_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_with_corner_in_bottom"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:textSize="@dimen/text_size_18sp"
+            android:paddingBottom="10dp"
+            android:textColor="@color/colorPrimary"
+            android:text="@string/pos_btn_content"
+            android:visibility="visible"/>
+
         <LinearLayout
+            android:id="@+id/upgrade_dialog_button_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:background="@drawable/bg_with_corner_in_bottom"
             android:weightSum="2"
-            android:layout_marginBottom="10dp">
+            android:visibility="gone"
+            >
             <TextView
                 android:id="@+id/upgrade_dialog_neg_btn"
                 android:layout_width="0dp"
@@ -76,9 +93,13 @@
                 android:background="@color/white"
                 android:paddingTop="11dp"
                 android:paddingBottom="12dp"
-                android:paddingLeft="@dimen/dp_40"
-                android:paddingRight="@dimen/dp_40"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 />
+            <TextView
+                android:layout_width="@dimen/commonLineWidth"
+                android:layout_height="match_parent"
+                android:background="@color/commonLineColor"/>
             <TextView
                 android:id="@+id/upgrade_dialog_pos_btn"
                 android:layout_width="0dp"
@@ -86,13 +107,12 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:background="@color/white"
-                android:layout_marginLeft="0.5dp"
                 android:paddingTop="11dp"
                 android:textSize="@dimen/text_size_18sp"
                 android:paddingBottom="12dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:textColor="@color/colorPrimary"
-                android:paddingLeft="@dimen/dp_40"
-                android:paddingRight="@dimen/dp_40"
                 android:text="@string/pos_btn_content"/>
         </LinearLayout>
     </LinearLayout>

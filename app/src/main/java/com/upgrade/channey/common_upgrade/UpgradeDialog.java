@@ -15,6 +15,8 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +36,9 @@ public class UpgradeDialog {
     private NumberProgressBar bar;
     private TextView negBtn;
     private TextView posBtn;
+    private TextView forceBtn;
+    private LinearLayout bottomBtnGroup;
+    private FrameLayout progressBarGroup;
     private TextView noticeTv;
     private static final int MAX_PROGRESS = 100;
     private int mDownLoadStatus = -1;
@@ -41,7 +46,7 @@ public class UpgradeDialog {
     private static final int DOWNLOAD_STATUS_DOWNLOADING = 1;
     private static final int DOWNLOAD_STATUS_FAILURE = 2;
     private static final int DOWNLOAD_STATUS_END = 3;
-    private boolean focusUpdate = false;
+    private boolean forceUpdate = false;
     private boolean gotoMarket = false;
     private OnNegativeButtonClickListener onNegativeButtonClickListener;
     private Handler mHandler = new Handler(){
@@ -111,12 +116,19 @@ public class UpgradeDialog {
         negBtn = (TextView) view.findViewById(R.id.upgrade_dialog_neg_btn);
         posBtn = (TextView) view.findViewById(R.id.upgrade_dialog_pos_btn);
         noticeTv = (TextView) view.findViewById(R.id.upgrade_dialog_notice);
+        forceBtn = (TextView) view.findViewById(R.id.upgrade_dialog_force_btn);
+        bottomBtnGroup = (LinearLayout) view.findViewById(R.id.upgrade_dialog_button_group);
+        progressBarGroup = (FrameLayout) view.findViewById(R.id.upgrade_dialog_progressBar_group);
 
         content.setText(msg);
-        if(focusUpdate){
+        if(forceUpdate){
             noticeTv.setVisibility(View.VISIBLE);
+            forceBtn.setVisibility(View.VISIBLE);
+            bottomBtnGroup.setVisibility(View.GONE);
         }else {
             noticeTv.setVisibility(View.GONE);
+            forceBtn.setVisibility(View.GONE);
+            bottomBtnGroup.setVisibility(View.VISIBLE);
         }
         negBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,6 +142,30 @@ public class UpgradeDialog {
             @Override
             public void onClick(View v) {
                 noticeTv.setVisibility(View.GONE);
+                progressBarGroup.setVisibility(View.VISIBLE);
+                if(mDownLoadStatus == DOWNLOAD_STATUS_START || mDownLoadStatus == DOWNLOAD_STATUS_DOWNLOADING){
+                    Toast.makeText(activity,"下载已开始",Toast.LENGTH_LONG).show();
+                }else {
+                    if (gotoMarket){
+                        try {
+                            Uri uri = Uri.parse("market://details?id=" + activity.getPackageName());
+                            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            activity.startActivity(intent);
+                        } catch (Exception e) {
+                            downloadFromServer(apkLink,authority);
+                        }
+                    }else {
+                        downloadFromServer(apkLink,authority);
+                    }
+                }
+            }
+        });
+        forceBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                noticeTv.setVisibility(View.GONE);
+                progressBarGroup.setVisibility(View.VISIBLE);
                 if(mDownLoadStatus == DOWNLOAD_STATUS_START || mDownLoadStatus == DOWNLOAD_STATUS_DOWNLOADING){
                     Toast.makeText(activity,"下载已开始",Toast.LENGTH_LONG).show();
                 }else {
@@ -151,7 +187,7 @@ public class UpgradeDialog {
         dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
             public void onDismiss(DialogInterface dialog) {
-                if(focusUpdate){
+                if(forceUpdate){
                     activity.finish();
                     System.exit(0);
                 }
@@ -177,10 +213,10 @@ public class UpgradeDialog {
      * 是否强制更新，强制更新时，用户不更新将无法进入app
      * 请谨慎使用
      * notice:该方法调用请放在{@link #show(String, String, String)}前面
-     * @param focus 是否强制更新
+     * @param force 是否强制更新
      */
-    public UpgradeDialog focusUpdate(boolean focus){
-        focusUpdate = focus;
+    public UpgradeDialog forceUpdate(boolean force){
+        forceUpdate = force;
         return this;
     }
 
@@ -209,20 +245,20 @@ public class UpgradeDialog {
             @Override
             public void startDownload() {
                 mDownLoadStatus = DOWNLOAD_STATUS_START;
-                Log.d("qian","startDownloading");
+                Log.d(TAG,"startDownloading");
             }
 
             @Override
             public void downloadSuccess() {
                 mDownLoadStatus = DOWNLOAD_STATUS_END;
-                Log.d("qian","downloadSuccess");
+                Log.d(TAG,"downloadSuccess");
                 UpdateUtil.installApk(activity,authority);
             }
 
             @Override
             public void downloadFailure(Exception e) {
                 mDownLoadStatus = DOWNLOAD_STATUS_END;
-                Log.d("qian","downloadFailure"+e.getMessage());
+                Log.d(TAG,"downloadFailure"+e.getMessage());
                 mHandler.sendEmptyMessage(DOWNLOAD_STATUS_FAILURE);
             }
 

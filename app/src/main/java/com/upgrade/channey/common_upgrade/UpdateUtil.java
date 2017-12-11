@@ -28,7 +28,7 @@ import java.util.ArrayList;
  */
 
 public class UpdateUtil {
-    Context context;
+    private static final String TAG = "UpdateUtil";
     private static final String PATH = Environment.getExternalStorageDirectory().getAbsolutePath();
     private static String apkName;
 //    private static final String PATH = Environment.DIRECTORY_DOWNLOADS;
@@ -123,11 +123,18 @@ public class UpdateUtil {
                 InputStream inputStream;
                 Environment.getDownloadCacheDirectory();
 //                    String dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath()+"/shengdaxd/";
+//                String downLoadPath = Environment.getDownloadCacheDirectory().getAbsolutePath();
+//                Log.d(TAG,"downLoadPath -> "+downLoadPath);
+////                File parentFile = new File(PATH);
+////                if (!parentFile.exists()){
+//////                    parentFile.mkdir();
+////                    parentFile.mkdirs();
+////                }
                 File file = new File(PATH, apkName);
                 if(file.exists()){
                     file.delete();
                 }
-//                        Log.d("qian","下载到文件 "+file.getAbsolutePath()+" 中");
+//                        Log.d(TAG,"下载到文件 "+file.getAbsolutePath()+" 中");
                 if (connection.getResponseCode() == 200) {
                     int contentLength = connection.getContentLength();
                     inputStream = connection.getInputStream();
@@ -143,7 +150,7 @@ public class UpdateUtil {
                             size += length;
                             listener.onDownload(contentLength,size);
                         }
-                        Log.d("qian","file size "+size);
+                        Log.d(TAG,"file size "+size);
                         fileOutputStream.close();
                         fileOutputStream.flush();
                         listener.downloadSuccess();
