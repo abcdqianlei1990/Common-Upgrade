@@ -3,84 +3,75 @@
 
     <item
         is-multidex="false"
-        jar="/Users/channey/resposbility/Common-Upgrade/testDemo/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.1.0/jars/classes.jar"
+        jar="/Users/channey/resposbility/Common-Upgrade/sample/build/intermediates/exploded-aar/com.daimajia.numberprogressbar/library/1.4/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="aee64634871d88a419d59eb743c1258a60f19700">
-        <dex dex="/Users/channey/resposbility/Common-Upgrade/testDemo/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-25.1.0_3dcd2ee633bf1be6340037cd3cf50da5fba12b6c.jar" />
+        sha1="e82910dd72a1f446acb523c10abbb2ba330e9c9f">
+        <dex dex="/Users/channey/resposbility/Common-Upgrade/sample/build/intermediates/pre-dexed/debug/com.daimajia.numberprogressbar-library-1.4_f72afd4db0814edbf0e394e71ba02b7bc6887b58.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/channey/resposbility/Common-Upgrade/testDemo/build/intermediates/exploded-aar/com.android.support/support-fragment/25.1.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="2a53c4f3518116b8c6aee0e477233f0f7da8616f">
-        <dex dex="/Users/channey/resposbility/Common-Upgrade/testDemo/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-25.1.0_8d1de811435f3f191b4bb43153c43330f536805c.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/channey/resposbility/Common-Upgrade/testDemo/build/intermediates/exploded-aar/com.android.support/support-compat/25.1.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="ca3c7aa31e2726a400a6e552b93cb9f63c9a1e6d">
-        <dex dex="/Users/channey/resposbility/Common-Upgrade/testDemo/build/intermediates/pre-dexed/debug/com.android.support-support-compat-25.1.0_745b5e93bc29da3a81877306369217568504be81.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/channey/resposbility/Common-Upgrade/testDemo/build/intermediates/exploded-aar/com.github.abcdqianlei1990/app/unspecified/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="602e02fe8d67ea85caefd099dd0b34622efa4493">
-        <dex dex="/Users/channey/resposbility/Common-Upgrade/testDemo/build/intermediates/pre-dexed/debug/com.github.abcdqianlei1990-app-unspecified_f7cdabe0758fe2bcfcb6070bf267d44da2bddf41.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/channey/resposbility/Common-Upgrade/testDemo/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.1.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="0a0ef86b7fa568a52bf6214a0326ca1f1d618da7">
-        <dex dex="/Users/channey/resposbility/Common-Upgrade/testDemo/build/intermediates/pre-dexed/debug/com.android.support-support-core-utils-25.1.0_232dbbe5f18caf7b6500b81b307ab0acdfcee27b.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/channey/resposbility/Common-Upgrade/testDemo/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="1630658fbc2d222b988603c27b4a4249586fbfe7">
-        <dex dex="/Users/channey/resposbility/Common-Upgrade/testDemo/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-25.1.0_26852c72774137a9710efe3676e13bf6ad1636e5.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/channey/resposbility/Common-Upgrade/testDemo/build/intermediates/exploded-aar/com.android.support/support-v4/25.1.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="/Users/channey/resposbility/Common-Upgrade/testDemo/build/intermediates/pre-dexed/debug/com.android.support-support-v4-25.1.0_eb47c85688951ee2e4223b472c57ade2ed45472c.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/channey/resposbility/Common-Upgrade/testDemo/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.1.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="f02263e35e52668dd17b73bf961437e3d562b35f">
-        <dex dex="/Users/channey/resposbility/Common-Upgrade/testDemo/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-25.1.0_68453fed2d74b7ce5fb24fc37d645ca26a1d6631.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/channey/resposbility/Common-Upgrade/testDemo/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.1.0/jars/classes.jar"
+        jar="/Users/channey/resposbility/Common-Upgrade/sample/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.1.0/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
         sha1="6fb6ac3e8d3b9013819920d9ea11f3803c4c0033">
-        <dex dex="/Users/channey/resposbility/Common-Upgrade/testDemo/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-25.1.0_578088ac5dc6e0a4adcf0998b5ecc2d1640b531b.jar" />
+        <dex dex="/Users/channey/resposbility/Common-Upgrade/sample/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-25.1.0_4dc14657ab23b1132c798240539be5c6f9c92154.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/channey/resposbility/Common-Upgrade/sample/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f02263e35e52668dd17b73bf961437e3d562b35f">
+        <dex dex="/Users/channey/resposbility/Common-Upgrade/sample/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-25.1.0_09fd7a7b5fc1100446bee7ddb6fd95c401e56ef1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/channey/resposbility/Common-Upgrade/sample/build/intermediates/exploded-aar/com.github.abcdqianlei1990/app/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="602e02fe8d67ea85caefd099dd0b34622efa4493">
+        <dex dex="/Users/channey/resposbility/Common-Upgrade/sample/build/intermediates/pre-dexed/debug/com.github.abcdqianlei1990-app-unspecified_513ee707de54697ac7206549a264c547d84d98a2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/channey/resposbility/Common-Upgrade/sample/build/intermediates/exploded-aar/com.android.support/support-fragment/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2a53c4f3518116b8c6aee0e477233f0f7da8616f">
+        <dex dex="/Users/channey/resposbility/Common-Upgrade/sample/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-25.1.0_bd3a3c192eec0b323ecaf6d14692b8ab3b9d9ba4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/channey/resposbility/Common-Upgrade/sample/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e79aa3d9a16f8c9f16377c0608de70a8f31e5d80">
+        <dex dex="/Users/channey/resposbility/Common-Upgrade/sample/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-25.1.0_748e49b102cfd58cde18ffafbb3fb618deeb8d80.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/channey/resposbility/Common-Upgrade/sample/build/intermediates/exploded-aar/com.android.support/support-compat/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ca3c7aa31e2726a400a6e552b93cb9f63c9a1e6d">
+        <dex dex="/Users/channey/resposbility/Common-Upgrade/sample/build/intermediates/pre-dexed/debug/com.android.support-support-compat-25.1.0_3acae03dcd98e5970edd5c1d3f08876043edbcbd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/channey/resposbility/Common-Upgrade/sample/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0a0ef86b7fa568a52bf6214a0326ca1f1d618da7">
+        <dex dex="/Users/channey/resposbility/Common-Upgrade/sample/build/intermediates/pre-dexed/debug/com.android.support-support-core-utils-25.1.0_7c8ac634f4cb2519deb68e56d10198e4853b0c17.jar" />
     </item>
     <item
         is-multidex="false"
@@ -89,25 +80,34 @@
         optimize="true"
         revision="25.0.2"
         sha1="64cb6b229a8bdfd907bc8dd46839a0053e4c018d">
-        <dex dex="/Users/channey/resposbility/Common-Upgrade/testDemo/build/intermediates/pre-dexed/debug/support-annotations-25.1.0_268fe471ed935248a00ce77d7e2aa66cc675db4d.jar" />
+        <dex dex="/Users/channey/resposbility/Common-Upgrade/sample/build/intermediates/pre-dexed/debug/support-annotations-25.1.0_268fe471ed935248a00ce77d7e2aa66cc675db4d.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/channey/resposbility/Common-Upgrade/testDemo/build/intermediates/exploded-aar/com.daimajia.numberprogressbar/library/1.4/jars/classes.jar"
+        jar="/Users/channey/resposbility/Common-Upgrade/sample/build/intermediates/exploded-aar/com.android.support/support-v4/25.1.0/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="e82910dd72a1f446acb523c10abbb2ba330e9c9f">
-        <dex dex="/Users/channey/resposbility/Common-Upgrade/testDemo/build/intermediates/pre-dexed/debug/com.daimajia.numberprogressbar-library-1.4_2f81569d53c43fecb2387d191d29adace3d3bf05.jar" />
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/channey/resposbility/Common-Upgrade/sample/build/intermediates/pre-dexed/debug/com.android.support-support-v4-25.1.0_08b5e348415b812e6df2d56ec02fbdc56793f2fb.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/channey/resposbility/Common-Upgrade/testDemo/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.1.0/jars/classes.jar"
+        jar="/Users/channey/resposbility/Common-Upgrade/sample/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="e79aa3d9a16f8c9f16377c0608de70a8f31e5d80">
-        <dex dex="/Users/channey/resposbility/Common-Upgrade/testDemo/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-25.1.0_89856b22366d1f91c20a018308cd4ae03824e5e6.jar" />
+        sha1="1630658fbc2d222b988603c27b4a4249586fbfe7">
+        <dex dex="/Users/channey/resposbility/Common-Upgrade/sample/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-25.1.0_9d29d33c5182fc618ac0c49d985939b13fe03414.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/channey/resposbility/Common-Upgrade/sample/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="aee64634871d88a419d59eb743c1258a60f19700">
+        <dex dex="/Users/channey/resposbility/Common-Upgrade/sample/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-25.1.0_9dc2ce921942ad17b8a0499dda156aa1c5ae5728.jar" />
     </item>
 
 </items>
