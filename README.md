@@ -1,6 +1,6 @@
 [![GitHub release](https://img.shields.io/github/release/abcdqianlei1990/Common-Upgrade.svg)](https://github.com/abcdqianlei1990/Common-Upgrade/releases)
 # Common-Upgrade
-app自动更新模块，支持android7.0
+app自动更新模块，支持android7.0<br/>
 ![baidu](http://imgsrc.baidu.com/forum/w%3D580/sign=279d5ba5f4faaf5184e381b7bc5594ed/a5560923dd54564e7bde17babade9c82d0584ff9.jpg "百度logo") 
 
 ## useage
